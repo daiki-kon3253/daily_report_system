@@ -9,9 +9,9 @@ public class ClientValidator {
     public static List<String> validate(Client r) {
         List<String> errors = new ArrayList<String>();
 
-        String title_error = _validateTitle(r.getTitle());
-        if(!title_error.equals("")) {
-            errors.add(title_error);
+        String client_error = _validateClient(r.getClient());
+        if(!client_error.equals("")) {
+            errors.add(client_error);
         }
 
         String content_error = _validateContent(r.getContent());
@@ -22,7 +22,7 @@ public class ClientValidator {
         return errors;
     }
 
-    private static String _validateTitle(String client) {
+    private static String _validateClient(String client) {
         if(client == null || client.equals("")) {
             return "顧客名を入力してください。";
             }

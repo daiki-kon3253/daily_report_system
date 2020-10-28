@@ -77,11 +77,11 @@ public class Client {
         this.client_date = client_date;
     }
 
-    public String getTitle() {
+    public String getClient() {
         return client;
     }
 
-    public void setTitle(String client) {
+    public void setClient(String client) {
         this.client = client;
     }
 
