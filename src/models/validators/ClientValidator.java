@@ -22,9 +22,9 @@ public class ClientValidator {
         return errors;
     }
 
-    private static String _validateTitle(String title) {
-        if(title == null || title.equals("")) {
-            return "会社名を入力してください。";
+    private static String _validateTitle(String client) {
+        if(client == null || client.equals("")) {
+            return "顧客名を入力してください。";
             }
 
         return "";

@@ -40,8 +40,8 @@ public class Client {
     @Column(name = "client_date", nullable = false)
     private Date client_date;
 
-    @Column(name = "title", length = 255, nullable = false)
-    private String title;
+    @Column(name = "client", length = 255, nullable = false)
+    private String client;
 
     @Lob
     @Column(name = "content", nullable = false)
@@ -78,11 +78,11 @@ public class Client {
     }
 
     public String getTitle() {
-        return title;
+        return client;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setTitle(String client) {
+        this.client = client;
     }
 
     public String getContent() {
