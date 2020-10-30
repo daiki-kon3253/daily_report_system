@@ -163,14 +163,14 @@ table#client_list .client_name {
     width: 20%;
     padding: 10px 2%;
 }
-table#client_list .client_date {
+table#client_list .client_company {
     width: 20%;
 }
 
-table#client_list .client_client {
+table#client_list .client_phone {
     width: 37%;
 }
 
-table#client_list .client_action {
+table#client_list .client_address {
     width: 13%;
 }
