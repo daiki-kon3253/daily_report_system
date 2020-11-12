@@ -1,6 +1,5 @@
 package models;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 
 import javax.persistence.Column;
@@ -8,9 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -33,19 +29,19 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne
-    @JoinColumn(name = "employee_id", nullable = false)
-    private Employee employee;
+    @Column(name = "name", nullable = false)
+    private String name;
 
-    @Column(name = "client_date", nullable = false)
-    private Date client_date;
+    @Column(name = "company", nullable = false)
+    private String company;
 
-    @Column(name = "client", length = 255, nullable = false)
-    private String client;
+    @Column(name = "phone", nullable = false)
+    private String phone;
 
-    @Lob
-    @Column(name = "content", nullable = false)
-    private String content;
+
+    @Column(name = "address", nullable = false)
+    private String address;
+
 
     @Column(name = "created_at", nullable = false)
     private Timestamp created_at;
@@ -61,36 +57,36 @@ public class Client {
         this.id = id;
     }
 
-    public Employee getEmployee() {
-        return employee;
+    public String getName() {
+        return name;
     }
 
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Date getClient_date() {
-        return client_date;
+    public String getCompany() {
+        return company;
     }
 
-    public void setClient_date(Date client_date) {
-        this.client_date = client_date;
+    public void setCompany(String company) {
+        this.company = company;
     }
 
-    public String getClient() {
-        return client;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setClient(String client) {
-        this.client = client;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public String getContent() {
-        return content;
+    public String getAddress() {
+        return address;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public Timestamp getCreated_at() {

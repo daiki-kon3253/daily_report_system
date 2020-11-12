@@ -17,13 +17,15 @@
                     <th class="client_company">会社</th>
                     <th class="client_phone">電話番号</th>
                     <th class="client_address">住所</th>
+                    <th class="client_action">操作</th>
                 </tr>
                  <c:forEach var="client" items="${clients}" varStatus="status">
                     <tr class="row${status.count % 2}">
-                        <td class="client_name"><c:out value="${client.employee.name}" /></td>
-                        <td class="client_company"><fmt:formatDate value='${report.report_date}' pattern='yyyy-MM-dd' /></td>
-                        <td class="client_phone">${report.title}</td>
-                        <td class="client_address"><a href="<c:url value='/clients/show?id=${client.id}' />">詳細を見る</a></td>
+                        <td class="client_name"><c:out value="${client.name}" /></td>
+                        <td class="client_company"><c:out value="${client.company}" /></td>
+                        <td class="client_phone"><c:out value="${client.phone}" /></td>
+                        <td class="client_address"><c:out value="${client.address}" /></td>
+                        <td class="client_action"><a href="<c:url value='/clients/show?id=${client.id}' />">詳細を見る</a></td>
                     </tr>
                  </c:forEach>
             </tbody>

@@ -161,16 +161,16 @@ table#client_list th {
 
 table#client_list .client_name {
     width: 20%;
-    padding: 10px 2%;
+
 }
 table#client_list .client_company {
     width: 20%;
 }
 
 table#client_list .client_phone {
-    width: 37%;
+    width: 20%;
 }
 
 table#client_list .client_address {
-    width: 13%;
+    width: 20%;
 }

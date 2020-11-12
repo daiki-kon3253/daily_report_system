@@ -11,8 +11,8 @@
           </div>
 </c:if>
 
-<label for="neme">氏名</label><br />
-<input type="text" name="neme" value="${client.neme}" />
+<label for="name">氏名</label><br />
+<input type="text" name="name" value="${client.name}" />
 <br /><br />
 
 <label for="company">会社</label><br />
