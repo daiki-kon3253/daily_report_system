@@ -40,7 +40,7 @@ public class ClientsEditServlet extends HttpServlet {
 
         request.setAttribute("client", r);
         request.setAttribute("_token", request.getSession().getId());
-
+        
         request.getSession().setAttribute("client_id", r.getId());
 
 

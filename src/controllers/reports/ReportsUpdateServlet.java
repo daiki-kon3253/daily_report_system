@@ -2,7 +2,9 @@ package controllers.reports;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.sql.Time;
 import java.sql.Timestamp;
+import java.time.LocalTime;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -46,7 +48,12 @@ public class ReportsUpdateServlet extends HttpServlet {
             r.setTitle(request.getParameter("title"));
             r.setContent(request.getParameter("content"));
             r.setUpdated_at(new Timestamp(System.currentTimeMillis()));
-
+            LocalTime lt = LocalTime.parse(request.getParameter("attendance_at"));
+            Time attendance_at = Time.valueOf(lt);
+            r.setAttendance_at(attendance_at);
+            LocalTime t = LocalTime.parse(request.getParameter("leave_work"));
+            Time leave_work = Time.valueOf(t);
+            r.setLeave_work(leave_work);
             List<String> errors = ReportValidator.validate(r);
             if(errors.size() > 0) {
                 em.close();

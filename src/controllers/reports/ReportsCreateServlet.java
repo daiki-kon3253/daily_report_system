@@ -2,7 +2,9 @@ package controllers.reports;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.sql.Time;
 import java.sql.Timestamp;
+import java.time.LocalTime;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -36,18 +38,19 @@ public class ReportsCreateServlet extends HttpServlet {
     /**
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String _token = (String)request.getParameter("_token");
-        if(_token != null && _token.equals(request.getSession().getId())) {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String _token = (String) request.getParameter("_token");
+        if (_token != null && _token.equals(request.getSession().getId())) {
             EntityManager em = DBUtil.createEntityManager();
 
             Report r = new Report();
 
-            r.setEmployee((Employee)request.getSession().getAttribute("login_employee"));
+            r.setEmployee((Employee) request.getSession().getAttribute("login_employee"));
 
             Date report_date = new Date(System.currentTimeMillis());
             String rd_str = request.getParameter("report_date");
-            if(rd_str != null && !rd_str.equals("")) {
+            if (rd_str != null && !rd_str.equals("")) {
                 report_date = Date.valueOf(request.getParameter("report_date"));
             }
             r.setReport_date(report_date);
@@ -55,12 +58,18 @@ public class ReportsCreateServlet extends HttpServlet {
             r.setTitle(request.getParameter("title"));
             r.setContent(request.getParameter("content"));
 
+            LocalTime lt = LocalTime.parse(request.getParameter("attendance_at"));
+            Time attendance_at = Time.valueOf(lt);
+            r.setAttendance_at(attendance_at);
+            LocalTime t = LocalTime.parse(request.getParameter("leave_work"));
+            Time leave_work = Time.valueOf(t);
+            r.setLeave_work(leave_work);
             Timestamp currentTime = new Timestamp(System.currentTimeMillis());
             r.setCreated_at(currentTime);
             r.setUpdated_at(currentTime);
 
             List<String> errors = ReportValidator.validate(r);
-            if(errors.size() > 0) {
+            if (errors.size() > 0) {
                 em.close();
 
                 request.setAttribute("_token", request.getSession().getId());
